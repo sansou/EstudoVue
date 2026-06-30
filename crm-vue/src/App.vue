@@ -1,39 +1,29 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
+import ShoppingCart from './components/ShoppingCart.vue'
 
-const contador = ref(0)
-
-
+const contador = ref(1)
 function adicionar() {
   contador.value++
 }
 
 function remover() {
-
-  if (contador.value > 0) {
+  if (contador.value > 1) {
     contador.value--
   }
-
 }
 </script>
 
 <template>
   <div>
-    <h2>Quantidade: {{ contador }}</h2>
-    <p v-if="contador == 0"> Contador zerado</p>
-    <p v-if="contador > 0"> Contador com itens</p>
-
-  </div>
-
-  <div>
-      
     <button @click="remover">
-      - 
+      Remove Item
     </button>
-    
+
     <button @click="adicionar">
-      +
+      Add Item
     </button>
   </div>
+  <ShoppingCart :quantidade="contador" :valor="19.99" />
 
 </template>
